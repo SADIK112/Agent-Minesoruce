@@ -19,7 +19,7 @@ export interface PartItem {
   checked: boolean;
 }
 
-interface NorthFixState {
+interface MineSourceState {
   report: ReportData;
   setReport: (r: Partial<ReportData>) => void;
   parts: PartItem[];
@@ -36,9 +36,9 @@ const defaultReport: ReportData = {
   location: "underground",
 };
 
-const Ctx = createContext<NorthFixState | null>(null);
+const Ctx = createContext<MineSourceState | null>(null);
 
-export function NorthFixProvider({ children }: { children: ReactNode }) {
+export function MineSourceProvider({ children }: { children: ReactNode }) {
   const [report, setReportState] = useState<ReportData>(defaultReport);
   const [parts, setParts] = useState<PartItem[]>([]);
 
@@ -62,8 +62,8 @@ export function NorthFixProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useNorthFix() {
+export function useMineSource() {
   const v = useContext(Ctx);
-  if (!v) throw new Error("useNorthFix must be used within NorthFixProvider");
+  if (!v) throw new Error("useMineSource must be used within MineSourceProvider");
   return v;
 }

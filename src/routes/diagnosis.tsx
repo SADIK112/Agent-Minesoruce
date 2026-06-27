@@ -1,13 +1,13 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Check, Loader2, ShieldAlert, Pencil, ChevronRight, AlertTriangle } from "lucide-react";
-import { AppHeader, AppFooter } from "@/components/northfix/AppShell";
-import { useNorthFix } from "@/lib/northfix-store";
+import { AppHeader, AppFooter } from "@/components/minesource/AppShell";
+import { useMineSource } from "@/lib/minesource-store";
 
 export const Route = createFileRoute("/diagnosis")({
   head: () => ({
     meta: [
-      { title: "Diagnosis · NorthFix" },
+      { title: "Diagnosis · Agent MineSource" },
       { name: "description", content: "Review likely faults, severity, and safety guidance for the reported issue." },
     ],
   }),
@@ -45,7 +45,7 @@ const ALTERNATIVES = [
 
 function DiagnosisPage() {
   const router = useRouter();
-  const { report } = useNorthFix();
+  const { report } = useMineSource();
   const [loading, setLoading] = useState(true);
   const [agentIdx, setAgentIdx] = useState(0);
   const [openAlt, setOpenAlt] = useState<number | null>(null);

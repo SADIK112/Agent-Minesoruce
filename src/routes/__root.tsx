@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { NorthFixProvider } from "../lib/northfix-store";
+import { MineSourceProvider } from "../lib/minesource-store";
 
 function NotFoundComponent() {
   return (
@@ -78,10 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "NorthFix — Maintenance Copilot" },
+      { title: "Agent MineSource — Maintenance Copilot" },
       { name: "description", content: "Report a breakdown. Get a diagnosis, parts list, and local suppliers." },
-      { name: "author", content: "NorthFix" },
-      { property: "og:title", content: "NorthFix — Maintenance Copilot" },
+      { name: "author", content: "Mine Agents" },
+      { property: "og:title", content: "Agent MineSource — Maintenance Copilot" },
       { property: "og:description", content: "Report a breakdown. Get a diagnosis, parts list, and local suppliers." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -121,9 +121,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NorthFixProvider>
+      <MineSourceProvider>
         <Outlet />
-      </NorthFixProvider>
+      </MineSourceProvider>
     </QueryClientProvider>
   );
 }

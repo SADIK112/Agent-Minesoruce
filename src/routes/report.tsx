@@ -1,13 +1,13 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, Mic, AlertTriangle, Lightbulb, Loader2 } from "lucide-react";
-import { AppHeader, AppFooter, Modal } from "@/components/northfix/AppShell";
-import { useNorthFix, type Severity, type Location } from "@/lib/northfix-store";
+import { AppHeader, AppFooter, Modal } from "@/components/minesource/AppShell";
+import { useMineSource, type Severity, type Location } from "@/lib/minesource-store";
 
 export const Route = createFileRoute("/report")({
   head: () => ({
     meta: [
-      { title: "Report an issue · NorthFix" },
+      { title: "Report an issue · Agent MineSource" },
       { name: "description", content: "Describe the breakdown to get a likely diagnosis and parts list." },
     ],
   }),
@@ -28,7 +28,7 @@ const SEVERITIES: { value: Severity; label: string; desc: string; tone: string }
 
 function ReportPage() {
   const router = useRouter();
-  const { report, setReport } = useNorthFix();
+  const { report, setReport } = useMineSource();
   const [error, setError] = useState<string | null>(null);
   const [sevError, setSevError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -246,7 +246,7 @@ function ReportPage() {
               <AlertTriangle className="h-5 w-5" />
             </div>
             <p className="text-sm text-foreground">
-              Stop the equipment. Notify your supervisor before continuing. NorthFix will still help
+              Stop the equipment. Notify your supervisor before continuing. Agent MineSource will still help
               prepare parts information but cannot clear equipment for operation.
             </p>
           </div>
