@@ -28,7 +28,7 @@ const SEVERITIES: { value: Severity; label: string; desc: string; tone: string }
 
 function ReportPage() {
   const router = useRouter();
-  const { report, setReport } = useMineSource();
+  const { report, setReport, clearResults } = useMineSource();
   const [error, setError] = useState<string | null>(null);
   const [sevError, setSevError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -56,6 +56,7 @@ function ReportPage() {
   };
 
   const proceed = () => {
+    clearResults();
     setSubmitting(true);
     setTimeout(() => router.navigate({ to: "/diagnosis" }), 900);
   };

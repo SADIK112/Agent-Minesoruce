@@ -14,6 +14,9 @@ import { Route as ReportRouteImport } from './routes/report'
 import { Route as PartsRouteImport } from './routes/parts'
 import { Route as DiagnosisRouteImport } from './routes/diagnosis'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiSuppliersRouteImport } from './routes/api/suppliers'
+import { Route as ApiPartsRouteImport } from './routes/api/parts'
+import { Route as ApiDiagnoseRouteImport } from './routes/api/diagnose'
 
 const SuppliersRoute = SuppliersRouteImport.update({
   id: '/suppliers',
@@ -40,6 +43,21 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiSuppliersRoute = ApiSuppliersRouteImport.update({
+  id: '/api/suppliers',
+  path: '/api/suppliers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPartsRoute = ApiPartsRouteImport.update({
+  id: '/api/parts',
+  path: '/api/parts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiDiagnoseRoute = ApiDiagnoseRouteImport.update({
+  id: '/api/diagnose',
+  path: '/api/diagnose',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +65,9 @@ export interface FileRoutesByFullPath {
   '/parts': typeof PartsRoute
   '/report': typeof ReportRoute
   '/suppliers': typeof SuppliersRoute
+  '/api/diagnose': typeof ApiDiagnoseRoute
+  '/api/parts': typeof ApiPartsRoute
+  '/api/suppliers': typeof ApiSuppliersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +75,9 @@ export interface FileRoutesByTo {
   '/parts': typeof PartsRoute
   '/report': typeof ReportRoute
   '/suppliers': typeof SuppliersRoute
+  '/api/diagnose': typeof ApiDiagnoseRoute
+  '/api/parts': typeof ApiPartsRoute
+  '/api/suppliers': typeof ApiSuppliersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +86,41 @@ export interface FileRoutesById {
   '/parts': typeof PartsRoute
   '/report': typeof ReportRoute
   '/suppliers': typeof SuppliersRoute
+  '/api/diagnose': typeof ApiDiagnoseRoute
+  '/api/parts': typeof ApiPartsRoute
+  '/api/suppliers': typeof ApiSuppliersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/diagnosis' | '/parts' | '/report' | '/suppliers'
+  fullPaths:
+    | '/'
+    | '/diagnosis'
+    | '/parts'
+    | '/report'
+    | '/suppliers'
+    | '/api/diagnose'
+    | '/api/parts'
+    | '/api/suppliers'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/diagnosis' | '/parts' | '/report' | '/suppliers'
-  id: '__root__' | '/' | '/diagnosis' | '/parts' | '/report' | '/suppliers'
+  to:
+    | '/'
+    | '/diagnosis'
+    | '/parts'
+    | '/report'
+    | '/suppliers'
+    | '/api/diagnose'
+    | '/api/parts'
+    | '/api/suppliers'
+  id:
+    | '__root__'
+    | '/'
+    | '/diagnosis'
+    | '/parts'
+    | '/report'
+    | '/suppliers'
+    | '/api/diagnose'
+    | '/api/parts'
+    | '/api/suppliers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +129,9 @@ export interface RootRouteChildren {
   PartsRoute: typeof PartsRoute
   ReportRoute: typeof ReportRoute
   SuppliersRoute: typeof SuppliersRoute
+  ApiDiagnoseRoute: typeof ApiDiagnoseRoute
+  ApiPartsRoute: typeof ApiPartsRoute
+  ApiSuppliersRoute: typeof ApiSuppliersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +171,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/suppliers': {
+      id: '/api/suppliers'
+      path: '/api/suppliers'
+      fullPath: '/api/suppliers'
+      preLoaderRoute: typeof ApiSuppliersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/parts': {
+      id: '/api/parts'
+      path: '/api/parts'
+      fullPath: '/api/parts'
+      preLoaderRoute: typeof ApiPartsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/diagnose': {
+      id: '/api/diagnose'
+      path: '/api/diagnose'
+      fullPath: '/api/diagnose'
+      preLoaderRoute: typeof ApiDiagnoseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +201,9 @@ const rootRouteChildren: RootRouteChildren = {
   PartsRoute: PartsRoute,
   ReportRoute: ReportRoute,
   SuppliersRoute: SuppliersRoute,
+  ApiDiagnoseRoute: ApiDiagnoseRoute,
+  ApiPartsRoute: ApiPartsRoute,
+  ApiSuppliersRoute: ApiSuppliersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
