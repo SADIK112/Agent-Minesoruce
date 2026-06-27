@@ -20,7 +20,7 @@ export function AppHeader({ showStepper = true }: { showStepper?: boolean }) {
   const router = useRouter();
   const [leaveOpen, setLeaveOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
-  const { report } = useMineSource();
+  const { report, resetAll } = useMineSource();
 
   const active = stepIndexForPath(pathname);
   const inWizard = active >= 0;
@@ -78,6 +78,7 @@ export function AppHeader({ showStepper = true }: { showStepper?: boolean }) {
             <button
               onClick={() => {
                 setLeaveOpen(false);
+                resetAll();
                 router.navigate({ to: "/" });
               }}
               className="rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium hover:bg-secondary"
