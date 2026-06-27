@@ -6,34 +6,47 @@ Update this file whenever a feature is completed or the active feature changes.
 
 ## Current Phase
 
-Feature 01 — in progress
+Dev 2 frontend wiring — **complete**. Waiting on Dev 1 backend/API routes.
 
 ---
 
 ## Active Feature
 
-**Dev 1:** Feature 01 — Shared Types  
-**Dev 2:** Waiting on Dev 1 Feature 01 before starting Feature 01
+**Dev 1:** Feature 02+ — Sudbury data, agent, API routes  
+**Dev 2:** Idle — all six frontend features shipped on mock API
 
 ---
 
 ## Completed
 
-_Nothing completed yet._
+### Dev 2 (frontend)
+
+- Feature 01: API Abstraction Layer — `api.ts`, `api-mock.ts`, `api-real.ts`
+- Feature 02: Store Expansion — `minesource-store.tsx`
+- Feature 03: Wire Diagnosis Screen — `diagnosis.tsx`
+- Feature 04: Wire Parts Screen — `parts.tsx`
+- Feature 05: Leaflet Map Component — `SupplierMap.tsx`
+- Feature 06: Wire Suppliers Screen — `suppliers.tsx` + geolocation + `SupplierMap`
+
+### Dev 2 polish (included in Feature 06)
+
+- `resetAll()` on wizard **Done** and **Leave** confirmation
+- `SUDBURY_CENTER` exported from `api.ts`
 
 ---
 
 ## In Progress
 
-- Dev 1 / Feature 01: Shared Types — create `src/lib/types.ts` with all six shared interfaces
-- Dev 2 / Feature 01: Blocked until Dev 1 Feature 01 is committed
+- Dev 1 / Feature 01: Shared Types — review `src/lib/types.ts` (added by Dev 2 as compile prerequisite)
+- Dev 1 / Feature 02: Sudbury Suppliers Data — `src/data/sudbury_suppliers.json`
 
 ---
 
 ## Next Up
 
-- Dev 1 / Feature 02: Sudbury Suppliers Data
-- Dev 2 / Feature 01: API Abstraction Layer (starts after Dev 1 Feature 01 is committed)
+- Dev 1: Features 03–12 (data files, agent, API routes)
+- Dev 2: Switch `api.ts` one-liner to `api-real.ts` once Dev 1 routes are live
+- Both: End-to-end test of full wizard on real API
 
 ---
 
@@ -50,3 +63,4 @@ _Nothing completed yet._
 - Flat JSON files for knowledge retrieval — no runtime vector DB, faster setup, easier fallback
 - `safetyCritical` flag set by the API route before agent call — guarantees safety banner regardless of LLM output
 - Single orchestrator agent with two registered tools — spec said one agent, no multi-agent architecture
+- Store uses `partsResult` / `setPartsResult` (not `parts`) to avoid conflict with legacy checklist state until fully removed
