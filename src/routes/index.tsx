@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ClipboardList, Search, Wrench, MapPin, ShieldAlert, HelpCircle } from "lucide-react";
 import { useState } from "react";
-import { Modal, AppFooter } from "@/components/northfix/AppShell";
+import { Modal, AppFooter } from "@/components/minesource/AppShell";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NorthFix — Field maintenance copilot for LHD hydraulics" },
+      { title: "Agent MineSource — Field maintenance copilot for LHD hydraulics" },
       { name: "description", content: "Report a breakdown. Get a diagnosis, parts list, and local Sudbury suppliers — in minutes, on your phone." },
-      { property: "og:title", content: "NorthFix — Field maintenance copilot" },
+      { property: "og:title", content: "Agent MineSource — Field maintenance copilot" },
       { property: "og:description", content: "Report a breakdown. Get a diagnosis, parts list, and local Sudbury suppliers." },
     ],
   }),
@@ -24,7 +24,7 @@ function Landing() {
           <span className="grid h-7 w-7 place-items-center rounded-md bg-primary text-primary-foreground">
             <ShieldAlert className="h-4 w-4" />
           </span>
-          <span className="text-base font-bold tracking-tight">NorthFix</span>
+          <span className="text-base font-bold tracking-tight">Agent MineSource</span>
         </div>
         <button
           type="button"
@@ -43,7 +43,7 @@ function Landing() {
         </div>
 
         <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-          NorthFix
+          Agent MineSource
         </h1>
         <p className="mt-4 text-base text-muted-foreground sm:text-lg">
           Report a breakdown. Get a diagnosis, parts list, and local suppliers.
@@ -72,14 +72,14 @@ function Landing() {
       <AppFooter long />
 
       {helpOpen && (
-        <Modal onClose={() => setHelpOpen(false)} title="About NorthFix">
+        <Modal onClose={() => setHelpOpen(false)} title="About Agent MineSource">
           <ol className="space-y-2 text-sm text-foreground">
             <li><span className="font-semibold">1. Report</span> the breakdown in plain language.</li>
             <li><span className="font-semibold">2. Review</span> a likely diagnosis and safety notes.</li>
             <li><span className="font-semibold">3. Confirm</span> a parts checklist and find local suppliers.</li>
           </ol>
           <p className="mt-4 rounded-md bg-secondary p-3 text-xs text-muted-foreground">
-            NorthFix provides decision support only. Always follow site procedures and certified inspection before operating equipment.
+            Agent MineSource provides decision support only. Always follow site procedures and certified inspection before operating equipment.
           </p>
         </Modal>
       )}

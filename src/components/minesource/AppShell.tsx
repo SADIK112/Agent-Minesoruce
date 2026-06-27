@@ -1,7 +1,7 @@
 import { Link, useRouter, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { HelpCircle, X, ShieldAlert } from "lucide-react";
-import { useNorthFix } from "@/lib/northfix-store";
+import { useMineSource } from "@/lib/minesource-store";
 
 const STEPS = [
   { key: "report", label: "Report", short: "Report", path: "/report" },
@@ -20,7 +20,7 @@ export function AppHeader({ showStepper = true }: { showStepper?: boolean }) {
   const router = useRouter();
   const [leaveOpen, setLeaveOpen] = useState(false);
   const [helpOpen, setHelpOpen] = useState(false);
-  const { report } = useNorthFix();
+  const { report } = useMineSource();
 
   const active = stepIndexForPath(pathname);
   const inWizard = active >= 0;
@@ -44,7 +44,7 @@ export function AppHeader({ showStepper = true }: { showStepper?: boolean }) {
           <span className="grid h-7 w-7 place-items-center rounded-md bg-primary text-primary-foreground">
             <ShieldAlert className="h-4 w-4" />
           </span>
-          <span className="text-base font-bold tracking-tight">NorthFix</span>
+          <span className="text-base font-bold tracking-tight">Agent MineSource</span>
         </Link>
 
         {showStepper && inWizard && (
@@ -95,14 +95,14 @@ export function AppHeader({ showStepper = true }: { showStepper?: boolean }) {
       )}
 
       {helpOpen && (
-        <Modal onClose={() => setHelpOpen(false)} title="About NorthFix">
+        <Modal onClose={() => setHelpOpen(false)} title="About Agent MineSource">
           <ol className="space-y-2 text-sm text-foreground">
             <li><span className="font-semibold">1. Report</span> the breakdown in plain language.</li>
             <li><span className="font-semibold">2. Review</span> a likely diagnosis and safety notes.</li>
             <li><span className="font-semibold">3. Confirm</span> a parts checklist and find local suppliers.</li>
           </ol>
           <p className="mt-4 rounded-md bg-secondary p-3 text-xs text-muted-foreground">
-            NorthFix provides decision support only. Always follow site procedures and certified inspection before operating equipment.
+            Agent MineSource provides decision support only. Always follow site procedures and certified inspection before operating equipment.
           </p>
         </Modal>
       )}
@@ -211,12 +211,12 @@ export function AppFooter({ long = false }: { long?: boolean }) {
     <footer className="mx-auto max-w-5xl px-4 py-6 text-center text-xs text-muted-foreground sm:px-6">
       {long ? (
         <p>
-          NorthFix provides decision support only. It is not a substitute for certified inspection,
+          Agent MineSource provides decision support only. It is not a substitute for certified inspection,
           OEM service procedures, or supervisor approval. Always follow site procedures before operating equipment.
         </p>
       ) : (
         <p>
-          NorthFix provides decision support only. Always follow site procedures and certified inspection
+          Agent MineSource provides decision support only. Always follow site procedures and certified inspection
           before operating equipment.
         </p>
       )}

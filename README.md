@@ -1,10 +1,10 @@
-# NorthFix
+# Agent MineSource
 
 **Maintenance copilot for underground mining equipment.**
 
-NorthFix helps a maintenance worker report an underground LHD (Load-Haul-Dump) hydraulic problem, review a likely diagnosis, confirm a parts checklist, and find nearby Sudbury suppliers — all in a short, mobile-friendly wizard.
+Agent MineSource helps a maintenance worker report an underground LHD (Load-Haul-Dump) hydraulic problem, review a likely diagnosis, confirm a parts checklist, and find nearby Sudbury suppliers — all in a short, mobile-friendly wizard.
 
-> NorthFix provides decision support only. It is not a substitute for certified inspection, OEM service procedures, or supervisor approval.
+> Agent MineSource provides decision support only. It is not a substitute for certified inspection, OEM service procedures, or supervisor approval.
 
 ---
 
@@ -25,14 +25,14 @@ A landing page (`/`) introduces the tool and routes into **Report**.
 
 ## Mock-data scope
 
-This is a frontend prototype. All diagnoses, parts lists, and suppliers are mock data. There is no backend, no auth, and no persistence beyond in-memory React Context (`src/lib/northfix-store.tsx`). Loading states and the "agent thinking" panel are simulated.
+This is a frontend prototype. All diagnoses, parts lists, and suppliers are mock data. There is no backend, no auth, and no persistence beyond in-memory React Context (`src/lib/minesource-store.tsx`). Loading states and the "agent thinking" panel are simulated.
 
 ## Tech stack
 
 - **TanStack Start** (React 19, Vite 7) with file-based routing in `src/routes/`
 - **Tailwind CSS v4** with an industrial OKLCH design system in `src/styles.css` (deep slate navy + amber/copper accent + semantic safety colors)
 - **shadcn/ui** primitives in `src/components/ui/`
-- **React Context** for wizard state (`src/lib/northfix-store.tsx`)
+- **React Context** for wizard state (`src/lib/minesource-store.tsx`)
 
 ## Project layout
 
@@ -46,11 +46,11 @@ src/
     parts.tsx        Step 3 — parts checklist
     suppliers.tsx    Step 4 — Sudbury suppliers + map
   components/
-    northfix/
+    minesource/
       AppShell.tsx   Header, Stepper, Modal, Footer
     ui/              shadcn primitives
   lib/
-    northfix-store.tsx   Wizard state (report + parts)
+    minesource-store.tsx   Wizard state (report + parts)
   styles.css         Design tokens + Tailwind v4 theme
 ```
 

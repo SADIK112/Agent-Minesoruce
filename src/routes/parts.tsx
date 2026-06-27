@@ -1,13 +1,13 @@
 import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Copy, Info, Wrench, AlertTriangle, Check } from "lucide-react";
-import { AppHeader, AppFooter } from "@/components/northfix/AppShell";
-import { useNorthFix, type PartItem } from "@/lib/northfix-store";
+import { AppHeader, AppFooter } from "@/components/minesource/AppShell";
+import { useMineSource, type PartItem } from "@/lib/minesource-store";
 
 export const Route = createFileRoute("/parts")({
   head: () => ({
     meta: [
-      { title: "Parts checklist · NorthFix" },
+      { title: "Parts checklist · Agent MineSource" },
       { name: "description", content: "Suggested part categories for the diagnosed fault — confirm SKUs with your supplier." },
     ],
   }),
@@ -25,7 +25,7 @@ const DEFAULT_PARTS: PartItem[] = [
 
 function PartsPage() {
   const router = useRouter();
-  const { parts, setParts, togglePart } = useNorthFix();
+  const { parts, setParts, togglePart } = useMineSource();
   const [loading, setLoading] = useState(true);
   const [warn, setWarn] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
@@ -55,7 +55,7 @@ function PartsPage() {
       .filter((p) => p.checked)
       .map((p) => `- ${p.name} ×${p.qty}`)
       .join("\n");
-    const text = `NorthFix parts list\nFor: Hydraulic hose abrasion / fitting leak\n\n${lines}\n\nNote: suggested categories — confirm part numbers with supplier.`;
+    const text = `Agent MineSource parts list\nFor: Hydraulic hose abrasion / fitting leak\n\n${lines}\n\nNote: suggested categories — confirm part numbers with supplier.`;
     try {
       await navigator.clipboard.writeText(text);
       setToast("List copied to clipboard");

@@ -1,12 +1,12 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Phone, ExternalLink, MapPin, Check } from "lucide-react";
-import { AppHeader, AppFooter } from "@/components/northfix/AppShell";
+import { AppHeader, AppFooter } from "@/components/minesource/AppShell";
 
 export const Route = createFileRoute("/suppliers")({
   head: () => ({
     meta: [
-      { title: "Local suppliers · NorthFix" },
+      { title: "Local suppliers · Agent MineSource" },
       { name: "description", content: "Nearby Sudbury suppliers for hydraulic parts — sorted by best match and nearest distance." },
     ],
   }),
